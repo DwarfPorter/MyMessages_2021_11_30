@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -16,6 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Toast"/>
+
+        <Button
+            android:id="@+id/button_snakbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SnackBar"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

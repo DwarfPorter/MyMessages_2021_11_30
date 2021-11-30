@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +17,13 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_toast).setOnClickListener(view ->{
             showToast();
         });
+        findViewById(R.id.button_snakbar).setOnClickListener(view -> {
+            showSnackbar();
+        });
+    }
+
+    private void showSnackbar() {
+        Snackbar.make(findViewById(R.id.container), "Show messge in snack bar", Snackbar.LENGTH_LONG).show();
     }
 
     private void showToast() {
