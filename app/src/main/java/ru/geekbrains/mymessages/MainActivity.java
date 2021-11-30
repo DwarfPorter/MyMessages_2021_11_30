@@ -30,15 +30,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private int chosen = -1;
     private void showAlertDialog() {
+        final String[] items = new String[3];
+        items[0] = "First";
+        items[1] = "Second";
+        items[2] = "Third";
         new AlertDialog.Builder(this)
                 .setTitle("Alert Dialog!")
-                .setMessage("Very important message!")
                 .setCancelable(false)
+                .setSingleChoiceItems(items, chosen, (d, i) -> {
+                    chosen = i;
+                })
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(MainActivity.this, "Ok!", Toast.LENGTH_LONG).show();
+                        if (chosen != -1)
+                            Toast.makeText(MainActivity.this, "Ok! " + items[chosen], Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton("No", (dialogInterface, i) -> {
