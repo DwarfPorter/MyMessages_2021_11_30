@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity implements IDialogResult {
         findViewById(R.id.button_dialog_fragment_custom_view).setOnClickListener(view -> {
             showDialogFragmentCustomView();
         });
+        findViewById(R.id.button_bottom_dialog_fragment).setOnClickListener(view -> {
+            showBottomSheetDialogFragment();
+        });
+    }
+
+    private void showBottomSheetDialogFragment() {
+        new MyBottomSheetDialogFragment().show(getSupportFragmentManager(), "BottomDialogFragmentTAG");
     }
 
     private void showDialogFragmentCustomView() {

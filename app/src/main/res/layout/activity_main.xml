@@ -54,5 +54,12 @@
             android:layout_height="wrap_content"
             android:text="Dialog fragment Custom view"/>
 
+
+        <Button
+            android:id="@+id/button_bottom_dialog_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bottom sheet Dialog fragment"/>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
