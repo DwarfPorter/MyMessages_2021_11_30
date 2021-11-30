@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IDialogResult {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_dialog_fragment).setOnClickListener(view -> {
             showDialogFragment();
         });
+        findViewById(R.id.button_dialog_fragment_custom_view).setOnClickListener(view -> {
+            showDialogFragmentCustomView();
+        });
+    }
+
+    private void showDialogFragmentCustomView() {
+        new MyDialogCustomViewFragment().show(getSupportFragmentManager(), "DialogFragmentTAG");
     }
 
     private void showDialogFragment() {
@@ -98,5 +105,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void showToast() {
         Toast.makeText(this, "My Toast", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onDialogResult(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 }
