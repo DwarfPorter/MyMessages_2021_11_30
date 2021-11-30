@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("No", (dialogInterface, i) -> {
                     Toast.makeText(MainActivity.this, "No!", Toast.LENGTH_LONG).show();
                 })
+                .setNeutralButton("Cancel", null)
                 .show();
     }
 
