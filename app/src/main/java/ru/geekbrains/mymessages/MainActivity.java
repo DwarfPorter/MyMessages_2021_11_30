@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -28,6 +29,24 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_alert_dialog).setOnClickListener(view -> {
             showAlertDialog();
         });
+        findViewById(R.id.button_alert_dialog_custom_view).setOnClickListener(view -> {
+            showAlertDialogCustomView();
+        });
+    }
+
+    private void showAlertDialogCustomView() {
+        final View customView = getLayoutInflater().inflate(R.layout.custom_view, null);
+        customView.findViewById(R.id.button_custom_view).setOnClickListener(view -> {
+            showToast();
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Alert dialog with custom view")
+                .setView(customView)
+                .setPositiveButton("Yes", (d, i) -> {
+                    Toast.makeText(MainActivity.this, "YES!", Toast.LENGTH_SHORT).show();
+                })
+                .show();
     }
 
     private void showAlertDialog() {
