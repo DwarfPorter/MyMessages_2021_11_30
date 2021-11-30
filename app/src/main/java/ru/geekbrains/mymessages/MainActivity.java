@@ -1,7 +1,9 @@
 package ru.geekbrains.mymessages;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -23,6 +25,23 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_snakbar_with_action).setOnClickListener(view -> {
             showSnackbarWithAction();
         });
+        findViewById(R.id.button_alert_dialog).setOnClickListener(view -> {
+            showAlertDialog();
+        });
+    }
+
+    private void showAlertDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Alert Dialog!")
+                .setMessage("Very important message!")
+                .setIcon(R.mipmap.ic_launcher_round)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(MainActivity.this, "Ok!", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .show();
     }
 
     private void showSnackbar() {

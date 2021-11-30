@@ -30,5 +30,11 @@
             android:layout_height="wrap_content"
             android:text="SnackBar with action"/>
 
+        <Button
+            android:id="@+id/button_alert_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alert Dialog"/>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
