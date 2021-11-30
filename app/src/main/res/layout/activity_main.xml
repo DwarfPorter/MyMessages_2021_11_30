@@ -61,5 +61,11 @@
             android:layout_height="wrap_content"
             android:text="Bottom sheet Dialog fragment"/>
 
+        <Button
+            android:id="@+id/button_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification"/>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

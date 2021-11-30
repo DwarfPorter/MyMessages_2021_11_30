@@ -1,9 +1,16 @@
 package ru.geekbrains.mymessages;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -11,6 +18,8 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements IDialogResult {
+
+    private static final String CHANNEL_ID = "CHA_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,38 @@ public class MainActivity extends AppCompatActivity implements IDialogResult {
         findViewById(R.id.button_bottom_dialog_fragment).setOnClickListener(view -> {
             showBottomSheetDialogFragment();
         });
+        findViewById(R.id.button_notification).setOnClickListener(view -> {
+            showNotification();
+        });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            createNotificationChannel();
+        }
+    }
+
+    private void showNotification() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        // Все цветные иконки отображаются только в оттенках серого
+        builder.setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("Hello")
+                .setContentText("GeekBrains")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        // Числовой идентификатор (42) указывает на уникальный ID нотификации. Если вы не хотите добавлять новую нотификацию, а изменить старую, можете найти ее по ID и поменять
+        NotificationManagerCompat.from(this).notify(42, builder.build());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void createNotificationChannel() {
+        String name = "Name";
+        String descriptionText = "Description";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+        channel.setDescription(descriptionText);
+
+        // Регистрируем канал в системе
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.createNotificationChannel(channel);
     }
 
     private void showBottomSheetDialogFragment() {
