@@ -24,5 +24,11 @@
             android:layout_height="wrap_content"
             android:text="SnackBar"/>
 
+        <Button
+            android:id="@+id/button_snakbar_with_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SnackBar with action"/>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
