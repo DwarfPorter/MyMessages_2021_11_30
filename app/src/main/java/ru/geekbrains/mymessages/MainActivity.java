@@ -32,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_alert_dialog_custom_view).setOnClickListener(view -> {
             showAlertDialogCustomView();
         });
+        findViewById(R.id.button_dialog_fragment).setOnClickListener(view -> {
+            showDialogFragment();
+        });
+    }
+
+    private void showDialogFragment() {
+        new MyDialogFragment().show(getSupportFragmentManager(), "DialogTAG");
     }
 
     private void showAlertDialogCustomView() {
