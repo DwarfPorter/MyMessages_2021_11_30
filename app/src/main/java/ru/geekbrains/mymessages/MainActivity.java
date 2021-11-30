@@ -34,12 +34,14 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Alert Dialog!")
                 .setMessage("Very important message!")
-                .setIcon(R.mipmap.ic_launcher_round)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(MainActivity.this, "Ok!", Toast.LENGTH_LONG).show();
                     }
+                })
+                .setNegativeButton("No", (dialogInterface, i) -> {
+                    Toast.makeText(MainActivity.this, "No!", Toast.LENGTH_LONG).show();
                 })
                 .show();
     }
